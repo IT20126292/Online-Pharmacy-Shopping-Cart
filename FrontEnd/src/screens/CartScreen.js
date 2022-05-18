@@ -1,4 +1,6 @@
 import "./CartScreen.css";
+import jspdf from 'jspdf';
+import "jspdf-autotable";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -35,6 +37,49 @@ const CartScreen = () => {
       .toFixed(2);
   };
 
+  // genarate pdf
+  const generatePDF = tickets => {
+
+    const doc = new jspdf();       
+    const tableColumn = ["Name", "Quantity", "Price"];  
+    // const subtotal = ["Sub Total"] ;   
+    const tableRows = [];        
+    const date = Date().split(" ");        
+    const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+
+  tickets.map(ticket => {
+
+    const ticketData = [
+        
+        ticket.productName,     
+        ticket.qty,
+        ticket.productPrice,    
+
+    ];  
+    tableRows.push(ticketData);  
+  })
+
+  tickets.map(tickettot => {
+
+    const total = [       
+    tickettot.totalPrice,       
+
+    ];
+    tableRows.push(total);
+  })
+
+  doc.text("CITY MEDICALS", 70, 8).setFontSize(13);
+  doc.text("Cart Invoice", 14, 16).setFontSize(13);
+  doc.text(`Date - ${dateStr}`, 14, 23);
+
+  //right down width height
+  //doc.addImage(img, 'JPEG', 170, 8, 25, 25);
+
+  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY:35});
+  doc.save("Product Report.pdf");
+
+  };
+
   return (
     <>
       <div className="cartscreen">
@@ -66,6 +111,10 @@ const CartScreen = () => {
           </div>
           <div>
             <button>Checkout</button>
+          </div>
+          {/* pdf generate */}
+          <div class="buttonn">
+            <button type="button" class="btn btn-primary" style={{backgroundColor:'#133C48',width:'380px'}} onClick={() => generatePDF(cartItems)} >GenerateReport</button> <br></br>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { BrowserRouter as Route } from "react-router-dom";
  import { useSelector } from "react-redux";
 import './header.css'
 import '../shopping-cart/Navbar.css'
+// import SearchBox from "../../components/shopping-cart/SearchBox"
 
 const Header = ({ click }) => {
     const cart = useSelector((state) => state.cart);
@@ -38,28 +40,33 @@ const Header = ({ click }) => {
                           type="text"
                           placeholder="Search Pharmacy Items..."
                         />
+                        {/* <Route render={({ history }) => <SearchBox history={history} />} /> <br/> */}
                       </div>
                     </div>
                   </div>
                 </form>
               </div>
-              <div className="navbar-nav ms-auto navbar__links">
-                <a href="/" className="nav-item nav-link">
-                  <i className="fa fa-user fa-2xl px-3 blackiconcolor" aria-hidden="true"></i>
-                </a>
-                <Link to="/cart" className="cart__link">
-                    <div className="icon-container">
-                    <i id='cart-icon'
-                        className="fa fa-shopping-cart fa-xl px-1 blackiconcolor"
-                        aria-hidden="true"
-                    ></i>
-                    <span className="cartlogo__badge">{getCartCount()}
-                    </span>
-                    </div>
-                </Link>
-                <a href="/" className="nav-item nav-link">
-                  <i className="fa fa-bars fa-2xl px-3 blackiconcolor" aria-hidden="true"></i>
-                </a>
+              <div className="navbar-nav ms-auto">
+                <ul className="navbar__links">
+                  <li>  
+                    <a href="/" className="nav-item nav-link">
+                      <i className="fa fa-user fa-lg px-3 blackiconcolor" aria-hidden="true"></i>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/cart" className="nav-item nav-link cart__link">
+                        <i className="fa fa-shopping-cart fa-lg px-0 blackiconcolor" aria-hidden="true"></i>
+                        <span className="cartlogo__badge">{getCartCount()}</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/" className="nav-item nav-link">
+                      <i className="fa fa-bars fa-lg px-3 blackiconcolor" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
