@@ -57,5 +57,39 @@ router.get('/:id',(req, res)=>{
 
 });
 
+router.put('/update/:id',(req, res)=>{
+
+    let detailId = req.params.id;
+
+    Detail.findByIdAndUpdate(detailId,(err,details)=>{
+        if(err){
+            return res.status(400).json({success:false,err});
+        }
+
+        return res.status(200).json({
+        success:true,
+        details
+        });
+    });
+
+});
+
+//Delete Post
+
+router.delete('/delete/:id',(req, res)=>{
+    let detailId = req.params.id;
+    Detail.findByIdAndRemove(detailId).exec((err,details) =>{
+
+    if (err) return res.status(400).json({
+        message:"Delete Unsuccessful",err
+    });
+
+    return res.json({
+        message:"Delete Successfull",details,
+        
+        });
+    });
+});
+
 
 module.exports = router;

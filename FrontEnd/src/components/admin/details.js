@@ -14,7 +14,9 @@ const Details = (props) => (
      <Link className="text-light" to={`/edit/${props.details._id}`}>Edit</Link> </button> &nbsp;
      <button type="button" class="btn btn-danger"
        onClick={() => {
+        
          props.deleteRecord(props.details._id);
+         
        }}
      >
        Delete
@@ -48,7 +50,7 @@ export default function RecordList() {
  
  // This method will delete a details
  async function deleteRecord(id) {
-   await fetch(`http://localhost:8090/details/${id}`, {
+   await fetch(`http://localhost:8090/details/delete/${id}`, {
      method: "DELETE"
    });
  
@@ -72,7 +74,7 @@ export default function RecordList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Details List</h3>
+     <h3 className="container text-center">Details List</h3>
      <table className="table table-sm table-dark container" style={{ marginTop: 20 }}>
        <thead>
          <tr>
