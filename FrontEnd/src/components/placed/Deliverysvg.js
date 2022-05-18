@@ -6,7 +6,7 @@ function SvgComponent(props) {
       className="animated"
       id="freepik_stories-take-away"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 750 500"
+      viewBox="-100 100 800 500"
       {...props}
     >
       <style>

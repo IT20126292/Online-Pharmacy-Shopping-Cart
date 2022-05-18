@@ -178,15 +178,15 @@ function Orderdetails() {
               <tbody>
                 <tr className="h5">
                   <td >Sub Total</td>
-                  <td className="text-right">Rs. 2000.00</td>
+                  <td className="text-right">{Text}</td>
                 </tr>
                 <tr className="text-warning">
                   <td>Discout</td>
-                  <td className="text-right">Rs. 500.00</td>
+                  <td className="text-right">{Text}</td>
                 </tr>
                 <tr className="h5 text-success">
                   <td >Total Price</td>
-                  <td className="text-right">Rs. 1500.00</td>
+                  <td className="text-right">{Text}</td>
                 </tr>
               </tbody>
             </table>

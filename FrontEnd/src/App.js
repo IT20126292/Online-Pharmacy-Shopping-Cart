@@ -10,7 +10,7 @@ import login from './components/login/login'
 import register from './components/register/register'
 import cart from './components/shopping-cart/shoppingCart'
 import retrivealldetails from './components/retrivealldetails/retrivealldetails'
-import admin from './components/admin/admin'
+import admin from './components/admin/details'
 
 import Navigation from './components/navigation/nav'
 
