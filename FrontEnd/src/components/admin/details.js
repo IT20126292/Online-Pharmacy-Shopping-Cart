@@ -11,7 +11,7 @@ const Details = (props) => (
    <td>{props.details.stpnumber}</td>
    <td>
     <button type="button" class="btn btn-success">
-     <Link className="text-light" to={`/edit/${props.details._id}`}>Edit</Link> </button> &nbsp;
+     <Link className="text-light" to={`/admin/editdetails/${props.details._id}`}>Edit</Link> </button> &nbsp;
      <button type="button" class="btn btn-danger"
        onClick={() => {
         
