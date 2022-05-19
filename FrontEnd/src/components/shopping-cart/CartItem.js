@@ -9,10 +9,10 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
       </div>
 
       <Link to={`/product/${item.product}`} className="cartItem__name">
-        <p style={{ fontWeight: "bold" }}>{item.productName}</p>
+        <p className="cartitem__price mt-3" style={{ fontWeight: "bold" }}>{item.productName}</p>
       </Link>
 
-      <p className="cartitem__price" style={{ fontWeight: "bold" }}>Rs.{item.productPrice}</p>
+      <p className="cartitem__price mt-3" style={{ fontWeight: "bold" }}>Rs.{item.productPrice}</p>
 
       <select
         value={item.qty}

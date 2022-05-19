@@ -1,13 +1,14 @@
 .cartitem {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.4rem;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
   background: #fff;
   border-radius: 12px;
   place-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .cartItem__name {
@@ -21,6 +22,7 @@
 
 .cartItem__select {
   padding: 10px 17px;
+  border-radius: 30px;
 }
 
 .cartItem__deleteBtn {
@@ -30,14 +32,14 @@
   border: 1px solid #f2f2f2;
   border-radius: 100px;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: all 0.4s ease-out;
 }
 
 .cartItem__deleteBtn:hover,
 .carItem__deleteBtn:active,
 .carItem__deleteBtn:focus {
-  background: #171717;
-  transform: scale(1.2);
+  background: #0095C4;
+  transform: scale(1.1);
 }
 
 @media (max-width: 700px) {
