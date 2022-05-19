@@ -4,7 +4,7 @@ let Visa = require('../models/Visa');
 router.route("/add").post((req, res) => {
 
     const name = req.body.name;
-    const cardNumber = Number(req.body.cardNumber);
+    const cardNumber = req.body.cardNumber;
     const cvvNumber = req.body.cvvNumber;
     const expDate = req.body.expDate;
 
@@ -32,5 +32,20 @@ router.route("/all").get((req, res) => {
         console.log(err);
     })
 })
+
+router.delete('/delete/:id',(req, res)=>{
+    let detailId = req.params.id;
+    Visa.findByIdAndRemove(detailId).exec((err,visa) =>{
+
+    if (err) return res.status(400).json({
+        message:"Delete Unsuccessful",err
+    });
+
+    return res.json({
+        message:"Delete Successfull",visa,
+        
+        });
+    });
+});
 
 module.exports = router;
