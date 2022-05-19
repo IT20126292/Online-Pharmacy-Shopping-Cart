@@ -38,7 +38,7 @@ function placed() {
 
                 <div class="row row-cols-1">
                     <div class="col">                <div className="card shadow" id="card">
-                        <div className="card-body mb-5 ml-2 mr-2">
+                        <div className="card-body ml-2 mr-2">
                             <div class="mb-3 bg-white">
                                 <div class="bs-example">
                                     <div class="d-flex justify-content-between">
@@ -78,7 +78,7 @@ function placed() {
                                 <button type="button" class="btn-close ml-2" data-bs-dismiss="alert"></button>
 
                             </div>
-                            <button class="btn btn-primary align-content-right" type="button" id="btnnext">Button</button>
+                            <button class="btn btn-primary align-content-right" type="button" id="btnnext" style={{float:'right', position:'relative',marginBottom:'10px'}}>Next</button>
                         </div>
 
 
