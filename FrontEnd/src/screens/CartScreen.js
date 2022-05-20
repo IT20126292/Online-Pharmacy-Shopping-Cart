@@ -1,4 +1,5 @@
 import "./CartScreen.css";
+import "../Images/logo.jpg"
 import jspdf from 'jspdf';
 import "jspdf-autotable";
 import { useEffect } from "react";
@@ -40,43 +41,49 @@ const CartScreen = () => {
   // genarate pdf
   const generatePDF = tickets => {
 
-    const doc = new jspdf();       
+    const doc = new jspdf(); 
+    var imgData = "https://upload.wikimedia.org/wikipedia/commons/2/25/Citymedicalslogo.png";   
     const tableColumn = ["Name", "Quantity", "Price"];  
     // const subtotal = ["Sub Total"] ;   
     const tableRows = [];        
     const date = Date().split(" ");        
-    const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+    const dateStr = date[1] + " " + date[2] + ", " + date[3];
 
-  tickets.map(ticket => {
+    tickets.map(ticket => {
 
-    const ticketData = [
-        
-        ticket.productName,     
-        ticket.qty,
-        ticket.productPrice,    
+      const ticketData = [
+          
+          ticket.productName,     
+          ticket.qty,
+          ticket.productPrice,    
 
-    ];  
-    tableRows.push(ticketData);  
-  })
+      ];  
+      tableRows.push(ticketData);  
+    })
 
-  tickets.map(tickettot => {
+    tickets.map(tickettot => {
 
-    const total = [       
-    tickettot.totalPrice,       
+      const total = [       
+      tickettot.totalPrice,       
 
-    ];
-    tableRows.push(total);
-  })
+      ];
+      tableRows.push(total);
+    })
 
-  doc.text("CITY MEDICALS", 70, 8).setFontSize(13);
-  doc.text("Cart Invoice", 14, 16).setFontSize(13);
-  doc.text(`Date - ${dateStr}`, 14, 23);
+    doc.addImage(imgData, 'JPEG', 77, 11, 60, 40);
+    doc.text("Cart Item List", 14, 75).setFontSize(10);
+    doc.text(`Date - ${dateStr}`, 14, 82);
+    doc.text("All Right Reserved", 90, 284);
+    doc.text("citymedicals@gmail.com | www.citymedicals.netlify.app | +94119 119 119", 47, 290);
+    doc.text("© 2022 Copyright @CityMedicals", 79, 278).setFontSize(20);
+    
 
-  //right down width height
-  //doc.addImage(img, 'JPEG', 170, 8, 25, 25);
+    // right down width height
 
-  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY:35});
-  doc.save("Product Report.pdf");
+    doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 9, }, startY:90});
+    doc.save("Cart Report.pdf");
+
+    // © 2022 Copyright @CityMedicals
 
   };
 

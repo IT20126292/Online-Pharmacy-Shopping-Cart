@@ -2,7 +2,7 @@
   width: 100%;
   padding: 1.4rem;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr 2fr 1fr;
   gap: 6px;
   background: #fff;
   border-radius: 12px;
