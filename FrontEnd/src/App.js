@@ -12,6 +12,8 @@ import cart from './components/shopping-cart/shoppingCart'
 import retrivealldetails from './components/retrivealldetails/retrivealldetails'
 import admin from './components/admin/details'
 import visa from './components/admin/visa'
+import editdetails from './components/admin/editdetails'
+import test from './components/testcomponent/test'
 
 import Navigation from './components/navigation/nav'
 
@@ -31,10 +33,12 @@ export default class App extends Component {
      <Route path="/orderdetails" exact component={orderdetails} key={App.orderdetails}></Route>
      <Route path="/login" exact component={login} key={App.login}></Route>
      <Route path="/register" exact component={register} key={App.register}></Route>
+     <Route path="/test" exact component={test} key={App.test}></Route>
      {/* <Route path="/admin/details" exact component={retrivealldetails} key={App.retrivealldetails}></Route> */}
      <Route path="/cart" exact component={cart} key={App.cart}></Route>
      <Route path="/admin/details" exact component={admin} key={App.admin}></Route>
      <Route path="/admin/visa" exact component={visa} key={App.visa}></Route>
+     <Route path="/admin/editdetails/:id" exact component={editdetails} key={App.editdetails}></Route>
      
 
   <Footer/>

@@ -9,9 +9,10 @@ const Details = (props) => (
    <td>{props.details.address}</td>
    <td>{props.details.city}</td>
    <td>{props.details.stpnumber}</td>
+   <td>{props.details.status}</td>
    <td>
     <button type="button" class="btn btn-success">
-     <Link className="text-light" to={`/edit/${props.details._id}`}>Edit</Link> </button> &nbsp;
+     <Link className="text-light" to={`/admin/editdetails/${props.details._id}`}>Edit</Link> </button> &nbsp;
      <button type="button" class="btn btn-danger"
        onClick={() => {
         
@@ -84,6 +85,7 @@ export default function RecordList() {
            <th>Address</th>
            <th>City</th>
            <th>St Pnumber</th>
+           <th>Status</th>
            <th colSpan={2}>Action</th>
          </tr>
        </thead>
