@@ -16,6 +16,7 @@ export default class editdetails extends Component {
             address:"",
             city:"",
             stpnumber:"",
+            status:"",
         }
     }
 
@@ -35,7 +36,7 @@ export default class editdetails extends Component {
         e.preventDefault();
         const id = this.props.match.params.id;
 
-        const{fname,lname,email,tpnumber,tpnum,address,city,stpnumber} = this.state
+        const{fname,lname,email,tpnumber,tpnum,address,city,stpnumber,status} = this.state
         const data ={
             fname:fname,
             email:email,
@@ -43,13 +44,14 @@ export default class editdetails extends Component {
             address:address,
             city:city,
             stpnumber:stpnumber,
+            status:status,
         }
         console.log(data)
 
-    axios.put(`/details/update/${id}`,data).then((res) => {
+    axios.put(`http://localhost:8090/details/update/${id}`,data).then((res) => {
         if(res.data.success){
            // alert("Post Updated Sucessfully.....!")
-           toast.success('Details Post Updated Sucessfully.....!',{position:toast.POSITION.TOP_CENTER})
+           toast.success('Customer Details updated Sucessfully.....!',{position:toast.POSITION.TOP_CENTER})
             this.setState(
                 {
                     fname:"",
@@ -58,6 +60,7 @@ export default class editdetails extends Component {
                     address:"",
                     city:"",
                     stpnumber:"",
+                    status:"",
                 }
             )
         }
@@ -82,9 +85,10 @@ export default class editdetails extends Component {
                    address:res.data.details.address,
                    city:res.data.details.city,
                    stpnumber:res.data.details.stpnumber,
+                   status:res.data.details.status,
                 });
 
-                console.log(this.state.details);
+                console.log(this.data.details);
 
             }
         });
@@ -96,16 +100,16 @@ export default class editdetails extends Component {
 
         return (
 
-                <form className="submit-form">
-                <section className="h-100 h-custom bg-dark text-black h5" style={{ borderRadius: "25px" }}>
+                <form className="submit-form container">
+              
                   <br />
                   <h1>
                     {/* <center className="text-white">
                         Inside The Black Bar
                     </center> */}
                   </h1>
-                  <div className="container py-5 h-60">
-                    <div className="row d-flex justify-content-center align-items-center h-60">
+                  <div className="container py-5">
+                    <div className="row d-flex justify-content-center align-items-center">
                       <div className="col-12">
                         <div
                           className="card card-registration card-registration-3 bg-"
@@ -113,15 +117,15 @@ export default class editdetails extends Component {
                         >
                           <div className="card-body p-0">
                             <div className="row g-0">
-                              <div className="col-lg-6">
+                              <div className="">
                                 <div className="p-5">
                                   <h3 className="fw-normal mb-5">Change User Profile</h3>
                            
                                   <div className="row">
-                                    <div className="col-md-6 mb-4 pb-6">
+                                    <div className="col-md-6 mb-4">
                                       <div className="form-outline">
                                         <label className="form-label">
-                                          First name
+                                          Name
                                         </label>
           
                                         <input
@@ -138,8 +142,28 @@ export default class editdetails extends Component {
                                     <div className="col-md-6 mb-4 pb-6">
                                       <div className="form-outline">
                                         <label className="form-label">
+                                        E mail
+                                        </label>
+                                        <input
+                                          type="text"
+                                          id="email"
+                                          name="email"
+                                          disabled
+                                          className="form-control form-control-lg"
+                                          value={this.state.email}
+                                          onChange={this.handleInputChange}
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+          
+                                  <div className="row">
+                                    <div className="col-md-6 mb-4">
+                                      <div className="form-outline">
+                                        <label className="form-label">
                                         tpnumber
                                         </label>
+          
                                         <input
                                           type="text"
                                           id="tpnumber"
@@ -147,32 +171,33 @@ export default class editdetails extends Component {
                                           className="form-control form-control-lg"
                                           value={this.state.tpnumber}
                                           onChange={this.handleInputChange}
+                                          />
+          
+                                      </div>
+                                    </div>
+                                    <div className="col-md-6 mb-4 pb-6">
+                                      <div className="form-outline">
+                                        <label className="form-label">
+                                        address
+                                        </label>
+                                        <input
+                                          type="text"
+                                          id="address"
+                                          name="address"
+                                          className="form-control form-control-lg"
+                                          value={this.state.address}
+                                          onChange={this.handleInputChange}
                                         />
                                       </div>
                                     </div>
                                   </div>
-          
-                                  <div className="mb-4 pb-2">
-                                    <div className="form-outline">
-                                      <label className="form-label">
-                                      address
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="address"
-                                        name="address"
-                                        className="form-control form-control-lg"
-                                        value={this.state.address}
-                                        onChange={this.handleInputChange}/>
-                                    
-                                    </div>
-                                  </div>
+                                  
           
                                   <div className="row">
                                     <div className="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
                                       <div className="form-outline">
                                         <label className="form-label">
-                                        city
+                                        City
                                         </label>
                                         <input
                                           type="text"
@@ -191,7 +216,7 @@ export default class editdetails extends Component {
                                   <div className="mb-4 pb-2" style={{marginTop:'15px'}}>
                                     <div className="form-outline">
                                       <label className="form-label">
-                                      stpnumber
+                                      Second Phone Number
                                       </label>
                                       <input
                                         type="text"
@@ -203,21 +228,39 @@ export default class editdetails extends Component {
                                         onChange={this.handleInputChange}/>
     
                                     </div>
+
+                                    <div className="form-outline">
+                                      <label className="form-label">
+                                      Status &nbsp;
+                                      </label>
+
+
+                                <select id="status" className="form-control-lg dropdown-toggle selectpicker show-tick mt-4 pb-2" 
+                                onChange={this.handleInputChange} 
+                                data-role="select-dropdown"
+                               
+                                name="status" 
+                                value={this.state.status} data-live-search="true" >
+                                  <option></option>
+                                  <option>Completed</option>
+                                  <option>Error Occored</option>
+                                  <option>Pending</option>
+                                </select>
+    
+                                    </div>
                                   </div>
           
 
                                 </div>
                               </div>
-                              <div
-                                className="col-lg-6 bg-white"
-                                style={{ borderRadius: "25px" }}>
+                             
                                 <div className="p-5">
           
                                   <button type="submit" className="btn btn-success" onClick={this.onSubmit}>
                                     <i className="fa fa-check-square"></i>
                                     &nbsp; Update</button>
                                 </div>
-                              </div>
+                             
                             </div>
                           </div>
                         </div>
@@ -226,7 +269,7 @@ export default class editdetails extends Component {
                     <hr className="my-5" style={{color:"#f57d00"}}/>
                   </div>
                   
-                </section>
+               
               </form>
             );
           }

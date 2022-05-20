@@ -10,7 +10,7 @@ const detailSchema = new Schema({
     address : { type : String, required : true },
     city : { type : String, required : true },
     stpnumber : { type : String, required : true },
-
+    status : { type : String},
 
 })
 

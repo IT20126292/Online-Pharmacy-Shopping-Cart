@@ -14,6 +14,7 @@ function Orderdetails() {
   const [city, setCity] = useState();
   const [stpnumber, setStpnumber] = useState();
   const [paymethod, setPaymethod] = useState();
+  const [status, setStatus] = useState();
 
   const [emailError, setEmailError] = useState('')
   const validateEmail = (e) => {
@@ -39,7 +40,8 @@ function Orderdetails() {
     address,
     city,
     stpnumber,
-    paymethod
+    paymethod,
+    status
 
    }
 
@@ -226,6 +228,7 @@ function Orderdetails() {
                       </label>
 
                       <select id="demo_overview" className="form-control dropdown-toggle selectpicker show-tick" onChange={e => setCity(e.target.value)} data-role="select-dropdown" data-live-search="true">
+                        <option selected>Select City</option>
                         <option >Badulla</option>
                         <option default>Bandarawela</option>
                         <option>Kadawatha</option>
@@ -255,6 +258,14 @@ function Orderdetails() {
                       <span className="validity"></span>
                     </div>
                   </div>
+                  <input
+                        type="hidden"
+                        id="form6Example2"
+                        value="Not Completed"
+                        className="form-control"
+                        placeholder="070-XXXXXXX"
+                        onChange={e => setStatus(e.target.value)}
+                      />
                 </div>
               </form>
             </p>

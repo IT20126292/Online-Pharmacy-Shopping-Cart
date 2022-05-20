@@ -10,6 +10,7 @@ router.route("/add").post((req, res) => {
     const address = req.body.address;
     const city = req.body.city;
     const stpnumber = req.body.stpnumber;
+    const status = req.body.status;
 
     const newDetail = new Detail({
 
@@ -18,7 +19,8 @@ router.route("/add").post((req, res) => {
         tpnumber,
         address,
         city,
-        stpnumber
+        stpnumber,
+        status
 
     })
     
