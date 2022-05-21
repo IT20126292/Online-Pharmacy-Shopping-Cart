@@ -52,5 +52,3 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ### Member 4 - `IT20162382 - Mr. M.A.Y.P.W Bandara (yasirupanduka99)`
 
 #### Technologies used - Frontend: HTML, CSS (Bootstrap), React (Framework)Backend: Node JS, Database: MongoDB/Firebase, Main Language: JavaScript
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/200578b8-1b93-42e0-b394-75507735bef3/deploy-status)](https://app.netlify.com/sites/citymedicals/deploys)
