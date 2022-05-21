@@ -23,6 +23,8 @@
         "fs": "0.0.1-security",
         "is-empty": "^1.2.0",
         "jsonwebtoken": "^8.5.1",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.5.23",
         "mdb-ui-kit": "^3.11.0",
         "mongoose": "^6.3.0",
         "nodemon": "^2.0.15",
