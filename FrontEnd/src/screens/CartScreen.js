@@ -1,4 +1,7 @@
 import "./CartScreen.css";
+import "../Images/logo.jpg"
+import jspdf from 'jspdf';
+import "jspdf-autotable";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -35,6 +38,55 @@ const CartScreen = () => {
       .toFixed(2);
   };
 
+  // genarate pdf
+  const generatePDF = tickets => {
+
+    const doc = new jspdf(); 
+    var imgData = "https://upload.wikimedia.org/wikipedia/commons/2/25/Citymedicalslogo.png";   
+    const tableColumn = ["Name", "Quantity", "Price"];  
+    // const subtotal = ["Sub Total"] ;   
+    const tableRows = [];        
+    const date = Date().split(" ");        
+    const dateStr = date[1] + " " + date[2] + ", " + date[3];
+
+    tickets.map(ticket => {
+
+      const ticketData = [
+          
+          ticket.productName,     
+          ticket.qty,
+          ticket.productPrice,    
+
+      ];  
+      tableRows.push(ticketData);  
+    })
+
+    tickets.map(tickettot => {
+
+      const total = [       
+      tickettot.totalPrice,       
+
+      ];
+      tableRows.push(total);
+    })
+
+    doc.addImage(imgData, 'JPEG', 77, 11, 60, 40);
+    doc.text("Cart Item List", 14, 75).setFontSize(10);
+    doc.text(`Date - ${dateStr}`, 14, 82);
+    doc.text("All Right Reserved", 90, 284);
+    doc.text("citymedicals@gmail.com | www.citymedicals.netlify.app | +94119 119 119", 47, 290);
+    doc.text("© 2022 Copyright @CityMedicals", 79, 278).setFontSize(20);
+    
+
+    // right down width height
+
+    doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 9, }, startY:90});
+    doc.save("Cart Report.pdf");
+
+    // © 2022 Copyright @CityMedicals
+
+  };
+
   return (
     <>
       <div className="cartscreen">
@@ -62,10 +114,14 @@ const CartScreen = () => {
             <p>Sub Total ({getCartCount()}):   Rs.{getCartSubTotal()}</p>
             <p style={{ fontSize: 15, color: '#ff8605' }}>Discount:  Rs.0.00</p>
             <br/>
-            <p style={{ fontSize: 22, color: '#00da7e' }}><strong>Total Price:  Rs.{getCartSubTotal()}</strong></p>
+            <p style={{ fontSize: 22, color: '#00da7e', fontWeight:"bold" }}>Total Price:  Rs.{getCartSubTotal()}</p>
           </div>
           <div>
-            <button>Checkout</button>
+            <button className="button1">Checkout&nbsp;<i class="fa-solid fa-credit-card fa-lg"></i></button>
+          </div>
+          {/* pdf generate */}
+          <div>
+            <button className="button2" type="button" onClick={() => generatePDF(cartItems)}>Cart To Print&nbsp;<i class="fa-solid fa-print fa-lg"></i></button>
           </div>
         </div>
       </div>

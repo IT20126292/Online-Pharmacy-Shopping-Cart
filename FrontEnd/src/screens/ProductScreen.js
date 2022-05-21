@@ -37,14 +37,14 @@ const ProductScreen = ({ match, history }) => {
       ) : (
         <>
         <div className="container">
-          <div className="productscreen__left">
+          <div className="productscreen__left shadow p-2 mb-3 bg-white rounded">
             <div className="left__image">
               <img src={product.imageUrl} alt={product.productName} />
             </div>
             <div className="left__info">
               <p className="left__name">{product.productName}</p>
-              <p>Price: Rs.{product.productPrice}</p>
-              <p>Description: {product.productDescription}</p>
+              <p style={{fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>Price: Rs.{product.productPrice}</p>
+              <p style={{fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>Description: {product.productDescription}</p>
               <div className="productscreen__right">
                 <div className="right__info">
                     <p>

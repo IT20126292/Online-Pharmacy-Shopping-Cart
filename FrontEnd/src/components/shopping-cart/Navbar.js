@@ -26,7 +26,6 @@
                     <Link to="/cart" className="cart__link">
                         <i className="fas fa-shopping-cart"></i>
                         <span className="cartlogo__badge">{getCartCount()}
-                        {/* Cart <span className="cartlogo__badge">{getCartCount()}</span> */}
                         </span>
                     </Link>
                 </li>
