@@ -26,7 +26,7 @@
         "jspdf": "^2.5.1",
         "jspdf-autotable": "^3.5.23",
         "mdb-ui-kit": "^3.11.0",
-        "mongoose": "^6.3.0",
+        "mongoose": "^6.2.10",
         "nodemon": "^2.0.15",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
