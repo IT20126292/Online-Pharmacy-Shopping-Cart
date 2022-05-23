@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import jspdf from 'jspdf';
+import "jspdf-autotable";
  
 const Details = (props) => (
  <tr>
@@ -9,9 +11,10 @@ const Details = (props) => (
    <td>{props.details.address}</td>
    <td>{props.details.city}</td>
    <td>{props.details.stpnumber}</td>
+   <td>{props.details.status}</td>
    <td>
     <button type="button" class="btn btn-success">
-     <Link className="text-light" to={`/edit/${props.details._id}`}>Edit</Link> </button> &nbsp;
+     <Link className="text-light" to={`/admin/editdetails/${props.details._id}`}>Edit</Link> </button> &nbsp;
      <button type="button" class="btn btn-danger"
        onClick={() => {
         
@@ -70,20 +73,76 @@ export default function RecordList() {
      );
    });
  }
+
+  // genarate pdf
+  const generatePDF = tickets => {
+
+    const doc = new jspdf(); 
+    var imgData = "https://upload.wikimedia.org/wikipedia/commons/2/25/Citymedicalslogo.png";   
+    const tableColumn = ["Name", "Email", "Telephone", "Address", "City", "Status"];   
+    const tableRows = [];        
+    const date = Date().split(" ");        
+    const dateStr = date[1] + " " + date[2] + ", " + date[3];
+
+    tickets.map(ticket => {
+
+      const ticketData = [
+          
+          ticket.fname,     
+          ticket.email,
+          ticket.tpnumber,
+          ticket.address,
+          ticket.city,
+          ticket.status    
+
+      ];  
+      tableRows.push(ticketData);  
+    })
+
+    doc.addImage(imgData, 'JPEG', 77, 11, 60, 40);
+    doc.text("Order Details", 14, 75).setFontSize(10);
+    doc.text(`Date - ${dateStr}`, 14, 82);
+    doc.text("All Right Reserved", 90, 284);
+    doc.text("citymedicals@gmail.com | www.citymedicals.netlify.app | +94119 119 119", 47, 290);
+    doc.text("© 2022 Copyright @CityMedicals", 79, 278).setFontSize(20);
+    
+
+    // right down width height
+
+    doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 9, }, startY:90});
+    doc.save("Order Report.pdf");
+
+    // © 2022 Copyright @CityMedicals
+
+  };
  
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3 className="container text-center">Details List</h3>
-     <table className="table table-sm table-dark container" style={{ marginTop: 20 }}>
+    
+     
+
+     <div class="container mt-3">
+       <div class="row">
+       <div class="col-xs-12 col-sm-6">
+         <h3>Details List</h3>
+       </div><div class="col-xs-12 col-sm-6">
+         <button type="button" class="btn btn-outline-dark d-block mr-0 ml-auto" onClick={() => generatePDF(records)}>
+           <i class="fa fa-cloud-download" aria-hidden="true"></i></button>
+       </div></div>
+     </div>
+
+
+     <table className="table table-striped container table-responsive" style={{ marginTop: 20 }}>
        <thead>
-         <tr>
+         <tr className="bg-dark text-light text-center">
            <th>Name</th>
            <th>Email</th>
            <th>Telephone</th>
            <th>Address</th>
            <th>City</th>
            <th>St Pnumber</th>
+           <th>Status</th>
            <th colSpan={2}>Action</th>
          </tr>
        </thead>

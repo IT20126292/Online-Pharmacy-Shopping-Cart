@@ -10,6 +10,7 @@ router.route("/add").post((req, res) => {
     const address = req.body.address;
     const city = req.body.city;
     const stpnumber = req.body.stpnumber;
+    const status = req.body.status;
 
     const newDetail = new Detail({
 
@@ -18,7 +19,8 @@ router.route("/add").post((req, res) => {
         tpnumber,
         address,
         city,
-        stpnumber
+        stpnumber,
+        status
 
     })
     
@@ -58,19 +60,21 @@ router.get('/:id',(req, res)=>{
 });
 
 router.put('/update/:id',(req, res)=>{
-
-    let detailId = req.params.id;
-
-    Detail.findByIdAndUpdate(detailId,(err,details)=>{
+    Detail.findByIdAndUpdate(
+    req.params.id,
+    {
+        $set:req.body
+    },
+    (err)=>{
         if(err){
-            return res.status(400).json({success:false,err});
-        }
+        return res.status(400).json({error:err});
+    }
 
-        return res.status(200).json({
-        success:true,
-        details
+    return res.status(200).json({
+        success:"Updated Successfully"
         });
-    });
+    }
+);
 
 });
 

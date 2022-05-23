@@ -35,10 +35,10 @@ const header = () => {
                 </form>
               </div>
               <div className="navbar-nav ms-auto">
-                <a href="/" className="nav-item nav-link">
+                <a href="/login" className="nav-item nav-link">
                   <i className="fa fa-user fa-2xl px-3 blackiconcolor" aria-hidden="true"></i>
                 </a>
-                <a href="/" className="nav-item nav-link">
+                <a href="/cart" className="nav-item nav-link">
                   <i
                     className="fa fa-shopping-cart fa-2xl px-3 blackiconcolor"
                     aria-hidden="true"

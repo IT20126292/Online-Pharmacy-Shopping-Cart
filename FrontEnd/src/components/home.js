@@ -256,14 +256,14 @@ function home() {
       </a>
 
       {/* Login */}
-      <a href="/login">
+      {/* <a href="/login">
       <button type="button" className="btn btn-primary btn-lg mb-2 mr-3">Login</button> 
-      </a>
+      </a> */}
 
       {/* Cart */}
-      <a href="/cart">
+      {/* <a href="/cart">
       <button type="button" className="btn btn-primary btn-lg mb-2">Cart</button> 
-      </a>
+      </a> */}
       <br/>
       </div>
     </div>
