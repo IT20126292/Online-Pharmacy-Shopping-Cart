@@ -13,6 +13,7 @@ import SideDrawer from "./components/shopping-cart/SideDrawer";
 import Backdrop from "./components/shopping-cart/Backdrop";
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
+import Nav from './components/navigation/nav';
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   return (
     <Router>
       <Header/>
+      <Nav/>
       {/* <Navbar click={() => setSideToggle(true)}/> */}
       <SideDrawer show={sideToggle}/>
       <Backdrop show={sideToggle} click={() => setSideToggle(false)}/>
