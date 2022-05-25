@@ -44,6 +44,12 @@ const ProductScreen = ({ match, history }) => {
             <div className="left__info">
               <p className="left__name">{product.productName}</p>
               <p style={{fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>Price: Rs.{product.productPrice}</p>
+              <p style={{fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>
+                Status:&nbsp;
+                <span>
+                  {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                </span>
+              </p>
               <p style={{fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>Description: {product.productDescription}</p>
               <div className="productscreen__right">
                 <div className="right__info">
