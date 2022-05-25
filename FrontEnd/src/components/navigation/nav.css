@@ -10,3 +10,11 @@
     text-align: center;
 
 }
+
+a {
+    text-decoration: none;
+}
+
+button a:hover {
+    color: #00cff4;
+}
