@@ -1,7 +1,8 @@
 import "./ProductScreen.css";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Actions
 import { getProductDetails } from "../redux/actions/productActions";
@@ -24,7 +25,7 @@ const ProductScreen = ({ match, history }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));
-    // toast.success('Product Added Successfully',{position:toast.POSITION.TOP_CENTER})
+    toast.success('Successfully Added '+ qty + '🛍️  Items To Shopping Cart',{position:toast.POSITION.TOP_RIGHT, autoClose: 2000});
     // history.push(`/cart`);
   };
 
@@ -64,9 +65,10 @@ const ProductScreen = ({ match, history }) => {
                     </select>
                   </p>
                   <p>
-                    <button type="button" onClick={addToCartHandler}>
+                    <button type="button" disabled={product.countInStock === 0} onClick={addToCartHandler}>
                       Add To Cart
                     </button>
+                    <ToastContainer autoClose={2000}/>
                   </p>
                 </div>
               </div>

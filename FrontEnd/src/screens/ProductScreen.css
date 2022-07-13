@@ -74,6 +74,23 @@
   font-weight: bold;
   letter-spacing: .4rem;
   border-radius: 6px;
+  transition: all 150ms linear;
+}
+
+.right__info p > button:hover,
+.right__info p > button:focus {
+  background: #00c3ff;
+  color: #f4f4f4;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.2em);
+  transition: all 250ms linear;
+}
+
+.right__info p > button:disabled, button[disabled] {
+  border: 1px solid #ffffff;
+  background-color: #0096c456;
+  color: #f4f4f4;
+  cursor: not-allowed;
 }
 
 .right__info select {

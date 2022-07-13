@@ -53,30 +53,58 @@
   border: 1px solid #00da7e;
   cursor: pointer;
   border-radius: 10px;
+  transition: all 150ms linear;
   font-weight: 400;
   font-size: large;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.cartscreen__right div .button1:hover {
+.cartscreen__right div .button1:hover,
+.cartscreen__right div .button1:focus {
   opacity: 0.9;
+  background: #00ff95;
+  color: #f4f4f4;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.2em);
+  transition: all 250ms linear;
+}
+
+.cartscreen__right div .button1:disabled, .button1[disabled] {
+  border: 1px solid #ffffff;
+  background-color: #00da7faa;
+  color: #f4f4f4;
+  cursor: not-allowed;
 }
 
 .cartscreen__right div .button2 {
   padding: 10px 17px;
   width: 100%;
-  background: #00cff4;
+  background: #00c0e2;
   color: #f4f4f4;
   border: 1px solid #00cff4;
   cursor: pointer;
   border-radius: 10px;
+  transition: all 150ms linear;
   font-weight: 400;
   font-size: large;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.cartscreen__right div .button2:hover {
+.cartscreen__right div .button2:hover,
+.cartscreen__right div .button2:focus {
   opacity: 0.9;
+  background: #00d9ff;
+  color: #f4f4f4;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.2em);
+  transition: all 250ms linear;
+}
+
+.cartscreen__right div .button2:disabled, .button2[disabled] {
+  border: 1px solid #ffffff;
+  background-color: #0096c48e;
+  color: #f4f4f4;
+  cursor: not-allowed;
 }
 
 @media (max-width: 1320px) {
