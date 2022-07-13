@@ -40,21 +40,26 @@
   display: block;
   text-decoration: none;
   text-align: center;
-  color: #171717;
+  color: #f4f4f4;
   width: 100%;
   padding: 8px 16px;
-  background-color: #e2e2e2;
+  background-color: rgba(39, 165, 1, 0.789);
   border: 1px solid #ffffff;
   font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   font-weight:lighter;
   letter-spacing: .2rem;
   border-radius: 6px;
+  transition: all 150ms linear;
 }
 
 .info__button:hover {
-  background: #0095C4;
+  background: rgba(32, 131, 2, 0.71);
   color: #f4f4f4;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.2em);
+  transition: all 250ms linear;
 }
 
 @media (max-width: 1232px) {

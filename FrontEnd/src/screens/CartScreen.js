@@ -5,12 +5,16 @@ import "jspdf-autotable";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import CartItem from "../components/shopping-cart/CartItem";
 
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+
+toast.configure()
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -22,10 +26,12 @@ const CartScreen = () => {
 
   const qtyChangeHandler = (id, qty) => {
     dispatch(addToCart(id, qty));
+    toast.success('Quantity Updated Successfully',{position:toast.POSITION.TOP_RIGHT, autoClose: 2000})
   };
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+    toast.success('Remove Item From Your Cart',{position:toast.POSITION.TOP_RIGHT, autoClose: 2000})
   };
 
   const getCartCount = () => {
@@ -117,13 +123,14 @@ const CartScreen = () => {
             <p style={{ fontSize: 22, color: '#00da7e', fontWeight:"bold" }}>Total Price:  Rs.{getCartSubTotal()}</p>
           </div>
           <div>
-            <button className="button1">Checkout&nbsp;<i class="fa-solid fa-credit-card fa-lg"></i></button>
+            <button className="button1" disabled={cartItems.length === 0}>Checkout&nbsp;<i class="fa-solid fa-credit-card fa-lg"></i></button>
           </div>
           {/* pdf generate */}
           <div>
-            <button className="button2" type="button" onClick={() => generatePDF(cartItems)}>Cart To Print&nbsp;<i class="fa-solid fa-print fa-lg"></i></button>
+            <button className="button2" type="button" disabled={cartItems.length === 0} onClick={() => generatePDF(cartItems)}>Cart To Print&nbsp;<i class="fa-solid fa-print fa-lg"></i></button>
           </div>
         </div>
+        <ToastContainer autoClose={2000}/>
       </div>
     </>
   );
